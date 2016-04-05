@@ -9,4 +9,4 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_all 'app' #load all files in app (i.e., MVC files)
-require_all 'public' #load all files in public (i.e., CSS, JS, images)
+#require_all 'public' #load all files in public (i.e., CSS, JS, images)
