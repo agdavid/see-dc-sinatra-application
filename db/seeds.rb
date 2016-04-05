@@ -57,28 +57,3 @@ site_list.each do |name, site_hash|
   end
   s.save
 end
-
-user_list = {
-    "Avi" => {
-      :email => "avi@flatiron.com",
-      :password => "flatiron"
-    },
-    "Mark" => {
-      :email => "mark@facebook.com",
-      :password => "facebook"
-    },
-    "Matz" => {
-      :email => "matz@ruby.com",
-      :password => "ruby"
-    }
-  }
-
-
-user_list.each do |username, user_hash|
-  u = User.new
-  u.username = username
-  user_hash.each do |attribute, value|
-    u[attribute] = value
-  end
-  p.save
-end
