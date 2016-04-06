@@ -1,6 +1,9 @@
 
-<h1>Welcome to the Index</h1>
-<h4>Logged In As: <%=User.find(session[:user_id]).username%> <a href="logout"><input type="submit" value="Log Out"></a><br></h4>
+<h1>Welcome to the SightSeeDC Index</h1>
+<h4>Logged In As: <%= @user.username%> <a href="logout"><input type="submit" value="Log Out"></a><br></h4>
+have column 1 should have recent reviews
+have column 2 should have sights recently added to lists
+have button to "See Your List"
   <% unless locals.empty? %>
     <%= message %>
   <% end %>

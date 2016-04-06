@@ -13,7 +13,13 @@
 
 ActiveRecord::Schema.define(version: 3) do
 
-  create_table "sites", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
+    t.string  "content"
+    t.integer "user_id"
+    t.integer "sight_id"
+  end
+
+  create_table "sights", force: :cascade do |t|
     t.string "name"
     t.string "description"
   end
@@ -22,11 +28,6 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-  end
-
-  create_table "users_sites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "site_id"
   end
 
 end

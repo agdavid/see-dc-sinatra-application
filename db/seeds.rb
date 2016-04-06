@@ -1,4 +1,4 @@
-site_list = {
+sight_list = {
     "Washington Monument" => {
       :description => "Towering tribute to George Washington"
     },
@@ -49,11 +49,35 @@ site_list = {
     }
   }
 
-site_list.each do |name, site_hash|
-  s = Site.new
+sight_list.each do |name, sight_hash|
+  s = Sight.new
   s.name = name
-  site_hash.each do |attribute, value|
+  sight_hash.each do |attribute, value|
       s[attribute] = value
   end
   s.save
+end
+
+user_list = {
+    "Avi" => {
+      :email => "avi@flatiron.com",
+      :password_digest => "flatiron"
+    },
+    "Mark" => {
+      :email => "mark@facebook.com",
+      :password_digest => "facebook"
+    },
+    "Matz" => {
+      :email => "matz@ruby.com",
+      :password_digest => "ruby"
+    }
+  }
+
+user_list.each do |username, user_hash|
+  u = User.new
+  u.username = username
+  user_hash.each do |attribute, value|
+      u[attribute] = value
+  end
+  u.save
 end
