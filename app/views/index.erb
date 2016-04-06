@@ -1,1 +1,6 @@
-<h1>Hello from the Index Page!</h1>   
+
+<h1>Welcome to the Index</h1>
+<h4>Logged In As: <%=User.find(session[:user_id]).username%> <a href="logout"><input type="submit" value="Log Out"></a><br></h4>
+  <% unless locals.empty? %>
+    <%= message %>
+  <% end %>

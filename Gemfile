@@ -1,7 +1,5 @@
-# A sample Gemfile
-source "https://rubygems.org"
+source 'http://rubygems.org'
 
-# list gems
 gem 'sinatra'
 gem 'activerecord', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
@@ -11,14 +9,5 @@ gem 'sqlite3'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
-gem 'tux'
 gem 'bcrypt'
-
-group :test do
-  gem 'rspec'
-  gem 'capybara'
-  gem 'rack-test'
-  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
-end
-
-
+gem "tux"
