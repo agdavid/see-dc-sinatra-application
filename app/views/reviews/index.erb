@@ -1,0 +1,14 @@
+<h1>Welcome, <%= current_user.username %>, to User Reviews of DC Sights</h1>
+
+<% if @reviews.empty? %>
+  There are no reviews posted. Contribute your review now!
+  <a href="/reviews/new"><input type="submit" value="Create Review"></a><br>
+
+<% else %>
+
+  Here are the most recent reviews:<br>
+  <% @reviews.each do |review| %>
+    <%= review.user.username %> on the <%= review.sight.name %> - <%= review.content %><a href="/reviews/<%= review.id %>"><input type="submit" value="See Full Review"></a><br>
+  <% end %>
+  
+<% end %>

@@ -1,0 +1,34 @@
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
+<h4>Welcome to <%= @user.username %>'s SightSee DC Page</h4>
+
+<% if @sights.empty? && @reviews.empty? %>
+  
+  No sights selected - or - reviews posted.
+  <a href="/lists/new"><input type="submit" value="Create Sightseeing List"></a><br>
+
+<% else %>
+
+  <% if !@sights.empty? %>
+    <%= @user.username %> would like to visit the following sights:<br>
+    <% @sights.each do |sight| %>
+      <%= sight.name %> - <%= sight.description %><br>
+    <% end %><br>
+    <a href="/lists/<%= @user.slug %>/edit"><input type="submit" value="Edit Sightseeing List"></a><br></br>
+  <% else %>
+    No sights selected.
+    <a href="/lists/new"><input type="submit" value="Create Sightseeing List"></a><br></br>  
+  <% end %>
+
+  <% if !@reviews.empty? %>
+    <%= @user.username %> has posted the following reviews:
+    <% @reviews.each do |review| %>
+      <%= review.sight.name %> - <%= review.content %><br>
+    <% end %><br>
+  <% else %>
+    No reviews posted.  
+  <% end %>
+
+<% end %>

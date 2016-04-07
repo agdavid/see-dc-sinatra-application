@@ -1,4 +1,4 @@
-require './config/environment'
+#require './config/environment'
 require 'pry'
 
 class ApplicationController < Sinatra::Base
@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
 
 ######## HOMEPAGE ########
   get '/' do
+    #session.clear
     if logged_in
       @user = current_user
       erb :index

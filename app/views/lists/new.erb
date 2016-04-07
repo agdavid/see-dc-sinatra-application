@@ -1,0 +1,16 @@
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
+<h1><%= current_user.username %> Create Your Sightseeing List</h1>
+<form method="POST" action="/lists">
+  Choose from existing Sights by checking the box:<br>
+  <% @sights.each do |sight| %>
+  <input type="checkbox" name="user[sight_ids][]" id="sight_<%= sight.id %>" value="<%= sight.id %>"><%= sight.name %><br>
+  <% end %>
+  <br></br>
+  or, Create a new Sight to visit:<br>
+  Name: <input type="text" name="sight[name]" id="new_sight_name"><br>
+  Description (one line): <input type="text" name="sight[description]" id="new_sight_description"><br>
+  <input type="submit" value="Create Sightseeing List">
+</form>

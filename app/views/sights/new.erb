@@ -1,0 +1,6 @@
+<h1><%= current_user.username %>, create a new DC Sight</h1>
+<form method="POST" action="/sights">
+  Name: <input required type="text" name="sight[name]" id="new_sight_name"><br>
+  Description (one line): <input type="text" name="sight[description]" id="new_sight_description"><br>
+  <input type="submit" value="Create New Sight">
+</form>

@@ -10,49 +10,50 @@ Models
 
 Database
   table users: username string, email string, password_digest string
-  table reviews: user_id integer, sight_id integer
+  table reviews: content string, user_id integer, sight_id integer
   table sights: name string, description string
 
 *** Controllers ***
 ApplicationController
-  - get '/' - render latest reviews and list additions  
+  x get '/' - render latest reviews and list additions
+  x helper methods  
 
 UsersController
-  - get '/signup' - load signup form
-  - post '/signup' - process signup form
-  - get '/login' - load login form
-  - post '/login' - process login form
-  - get '/logout' - clear session
-  ** User Sights Routes **
-    - get '/users/:slug' - render user show page of list and comments
-    - get '/users/list/new' - load new list form
-    - post '/users/list' - process new list form
-    - get '/users/list/:slug/edit' - load list edit form
-    - patch '/users/list/:slug' - process list edit form
+  x get '/signup' - load signup form 
+  x post '/signup' - process signup form
+  x get '/login' - load login form
+  x post '/login' - process login form
+  x get '/logout' - clear session
+  ** User Lists Routes **
+    x get '/users/:slug' - render user show page of list and comments
+    x get '/lists/new' - load new list form
+    x post '/lists' - process new list form
+    x get '/lists/:slug/edit' - load list edit form
+    x patch '/lists/:slug' - process list edit form
 
 ReviewsController
-  - get '/reviews' - show all reviews
-  - get '/reviews/new - load new review form
-  - post '/reviews' - process new review form
-  - get '/reviews/:id' - show single review
-  - get '/reviews/:id/edit' - load edit form
-  - patch '/reviews/:id' - process edit form
-  - delete '/reviews/:id/delete' - process delete form
+  x get '/reviews' - show all reviews
+  x get '/reviews/new' - load new review form
+  x post '/reviews' - process new review form
+  x get '/reviews/:id' - show single review
+  x get '/reviews/:id/edit' - load edit form
+  x patch '/reviews/:id' - process edit form
+  x delete '/reviews/:id/delete' - process delete form
 
 SightsController
-  - get '/sights' - show all sights
-  - get '/sights/new' - load new sight form
-  - post '/sights' - process new sight form
-  - get '/sights/:id' - show single sight
+  x get '/sights' - show all sights
+  x get '/sights/new' - load new sight form
+  x post '/sights' - process new sight form
+  x get '/sights/:id' - show single sight
   ** Questionable Routes **
     - get '/sights/:id/edit' - load edit form
     - patch '/sights/:id' - process edit form
     - delete '/sights/:id/delete' - process delete form
 
 *** Views ***
-- users folder
-- sights folder
-- reviews folder
+x users folder
+x sights folder
+x reviews folder
 - layout.erb
 
 *** Public Folder ***

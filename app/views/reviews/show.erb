@@ -1,0 +1,12 @@
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
+<h4><%= @user.username %> reviewed the <%= @sight.name %>, and said:</h4>
+<%= @review.content %>
+<br></br>
+<a href="/reviews/<%= @review.id %>/edit"><input type="submit" value="Edit the Review"></a>
+<form method="POST" action="/reviews/<%= @review.id %>/delete">
+<input type="hidden" id="hidden" name="_method" value="DELETE">
+<input type="submit" value="Delete the Review">
+</form>

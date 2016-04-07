@@ -1,0 +1,19 @@
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
+<h1><%= @sight.name %></h1>
+Description: <%= @sight.description %>
+<br></br>
+<% if @reviews.empty? %>
+  There are no reviews posted for <%= @sight.name %>. Contribute your review now!
+  <a href="/reviews/new"><input type="submit" value="Create Review"></a><br>
+
+<% else %>
+  
+  Here are the most recent reviews for <%= @sight.name %>:<br>
+  <% @reviews.each do |review| %>
+    <%= review.user.username %> said - <%= review.content %><a href="/reviews/<%= review.id %>"><input type="submit" value="See Full Review"></a><br>
+  <% end %>
+
+<% end %>
