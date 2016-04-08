@@ -1,14 +1,20 @@
-<h1>Log In</h1>
+<div class="row">
+  <div class="col-sm-12">
+  
+    <h1>Log In</h1>
 
-<% unless locals.empty? %>
-  <%= message %>
-<% end %>
+    <% unless locals.empty? %>
+      <%= message %>
+    <% end %>
 
-<form method="post" action='/login'>
-  Username: <input required type="text" id="username" name="username"><br><br>
-  Password: <input required type="password" id="password" name="password"><br><br>
-  <input type="submit" id="submit" value="Login">
-</form><br>
+    <form method="POST" action='/login'>
+      <label>Username:</label> <input required type="text" id="username" name="username"><br><br>
+      <label>Password:</label> <input required type="password" id="password" name="password"><br><br>
+      <input type="submit" id="submit" value="Login">
+    </form>
 
-Need an account?
-  <a href="signup"><input type="submit" value="Sign Up"></a>
+    <label>Need an account?</label>
+      <a href="signup"><input type="submit" value="Sign Up"></a>
+  
+  </div> <!-- col-sm-12 -->
+</div> <!-- row -->

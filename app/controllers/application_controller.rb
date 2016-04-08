@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
       @user = current_user
       erb :index
     else
-      erb :homepage
+      erb :homepage, :layout => :"layout/external"
     end
   end
 

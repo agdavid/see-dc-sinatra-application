@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     if logged_in
       redirect '/'
     else
-      erb :"users/signup"
+      erb :"users/signup", :layout => :"layout/external"
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if logged_in
       redirect '/'
     else
-      erb :"users/login"
+      erb :"users/login", :layout => :"layout/external"
     end
   end
 
