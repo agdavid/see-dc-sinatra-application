@@ -1,20 +1,26 @@
 <div class="row">
-  <div class="col-sm-12">
   
-    <h1>Log In</h1>
-
+  <!-- LEFT CONTENT -->
+  <div class="col-sm-3">
+    <h1>SightSeeDC</h1>
+    <h4>See the City You Want to See</h4>
+  </div> <!-- col-sm-3 -->
+  
+  <!-- RIGHT CONTENT -->
+  <div class="col-sm-3 col-sm-push-6">
     <% unless locals.empty? %>
       <%= message %>
     <% end %>
 
-    <form method="POST" action='/login'>
-      <label>Username:</label> <input required type="text" id="username" name="username"><br><br>
-      <label>Password:</label> <input required type="password" id="password" name="password"><br><br>
-      <input type="submit" id="submit" value="Login">
-    </form>
+    <form class="form-signin" method="POST" action='/login'>
+      <h1 class="form-signin-heading">Log In</h1>
+      <label for="inputUsername" class="sr-only">Username</label> <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label> <input type="password" id="password" name="password" class="form-control" placeholder="Password" required><br><br>
+      <input type="submit" id="submit" value="Log In" class="btn btn-sm">
+    </form><br>
 
     <label>Need an account?</label>
-      <a href="signup"><input type="submit" value="Sign Up"></a>
-  
-  </div> <!-- col-sm-12 -->
+    <a href="/signup"><input type="submit" value="Sign Up" class="btn btn-sm"></a> 
+  </div> <!-- col-sm-3 -->
+
 </div> <!-- row -->

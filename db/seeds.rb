@@ -6,7 +6,7 @@ sight_list = {
       :description => "Historical memorial parks on a promenade"
     },
     "United States Capitol" => {
-      :description => "Legendary home of the U.S. legislatrue"
+      :description => "Legendary home of the U.S. legislature"
     },
     "White House" => {
       :description => "Iconic home of the U.S. president"

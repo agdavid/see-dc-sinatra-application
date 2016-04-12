@@ -22,7 +22,7 @@
   <!-- MESSAGE, if no sights or reviews -->
   <div class="row">
     <div class="col-sm-6">
-      No sights selected - or - reviews posted. Start your adventure now!<br>
+      No sights selected - or - reviews posted. Start your adventure now!<br></br>
       <a href="/lists/new"><input type="submit" value="Create List"></a><br>
     </div>
   </div>
@@ -35,7 +35,7 @@
       <% if !@sights.empty? %>
         <h4>
           <% if @user == current_user %>
-            Your list of sights (<a href="/lists/<%= @user.slug %>/edit">click here</a> to edit your list):
+            Your list of sights (click <a href="/lists/<%= @user.slug %>/edit">here</a> to edit your list):
           <% else %>
             <%= @user.username %>'s list of sights:
           <% end %>
@@ -55,13 +55,14 @@
         </div>
         <br></br>
       <% else %>
-        <h4>You have no sights selected. <a href="/lists/new">Click here</a> to create your list now!</h4><br>
+        <h4>You have no sights selected. Click <a href="/lists/new">here</a> to create your list now!</h4><br>
       <% end %>
     </div> <!-- left col-sm-6 -->
 
     <!-- *** RIGHT COLUMN *** -->
     <div class="col-sm-6">
       <% if !@reviews.empty? %>
+        
         <h4>
           <% if @user == current_user %>
             Your reviews (click to see and edit review):
@@ -75,16 +76,22 @@
               <% @reviews.each do |review| %>
                 <tr>
                   <td>
-                    <%= review.sight.name %> - <a href="/reviews/<%= review.id %>"><%= review.content %></a>
+                    <a href="/sights/<%= review.sight.id %>"><%= review.sight.name %></a> - <a href="/reviews/<%= review.id %>">"<%= review.content %>"</a>
                   </td>
                 </tr>
               <% end %>
             </tbody>
           </table>
         </div>
+
+        <h5>Want to share more thoughts? Contribute another review now!</h5>
+        <a href="/reviews/new"><input type="submit" value="Create Review"></a>
         <br></br>
+      
       <% else %>
-        <h4>You have no reviews posted. <a href="/sights">Click here</a> to select a sight to review now!</h4><br> 
+        
+        <h4>You have no reviews posted. Click <a href="/reviews/new">here</a> to submit a review!</h4><br> 
+      
       <% end %>
     </div> <!-- left col-sm-6 -->
 

@@ -19,13 +19,14 @@ class ReviewsController < ApplicationController
   end
 
   post '/reviews' do #process new review form
+
     if logged_in
       @review = Review.new(content: params[:review][:content], user_id: current_user.id, sight_id: params[:sight][:id].to_i)
       @review.save
-      
+        
       current_user.reviews << @review if !current_user.reviews.include?(@review)
       current_user.save
-      
+        
       @sight = Sight.find_by_id(params[:sight][:id])
       @sight.reviews << @review if !@sight.reviews.include?(@review)
       @sight.save
@@ -78,9 +79,14 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.user_id == current_user.id
       @review.destroy
-      redirect "/reviews" 
+      @user = User.find(@review.user_id)
+      @sights = @user.sights
+      @reviews = @user.reviews
+      erb :"/users/show", :layout => :"layout/internal", locals: {message: "Review successfully deleted!"}  
     else
-      redirect "/reviews"
+      @user = User.find(@review.user_id)
+      @sight = Sight.find_by_id(@review.sight_id)
+      erb :"/reviews/show", :layout => :"layout/internal", locals: {message: "#{current_user.username} this is not your review! You may not delete this content."}
     end
   end
 

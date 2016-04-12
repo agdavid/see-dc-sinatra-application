@@ -17,9 +17,17 @@ class ApplicationController < Sinatra::Base
       @user = current_user
       @sights = Sight.all
       @reviews = Review.all.order("id DESC")
-      erb :index, :layout => :"layout/internal"
+      erb :"/index", :layout => :"layout/internal"
     else
-      erb :homepage, :layout => :"layout/external"
+      erb :"/homepage", :layout => :"layout/external"
+    end
+  end
+
+  get '/about' do
+    if logged_in
+      erb :"/about", :layout => :"layout/internal"
+    else
+      redirect "/"
     end
   end
 

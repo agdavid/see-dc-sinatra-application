@@ -19,7 +19,7 @@
             <% @reviews.each do |review| %>
               <tr>
                 <td>
-                  <a href="/users/<%= review.user.slug %>"><%= review.user.username %></a> on the<a href="/sights/<%= review.sight.id %>"> <%= review.sight.name%></a> - <%= review.content %> 
+                  <a href="/users/<%= review.user.slug %>"><%= review.user.username %></a> on the<a href="/sights/<%= review.sight.id %>"> <%= review.sight.name%></a> - "<%= review.content %>" 
                   <% if current_user.id == review.user.id %> <!-- edit button -->
                     <a href="/reviews/<%= review.id %>/edit"><input type="submit" value="Edit Review"></a><br>
                   <% end %>
@@ -29,7 +29,7 @@
           </tbody>
         </table>
       </div>
-      <h4>Contribute a review now!</h4><br>
+      <h4>Want to share your thoughts? Contribute a review now!</h4><br>
       <a href="/reviews/new"><input type="submit" value="Create Review"></a>
       <br></br>
     </div> <!-- col-sm-12 -->

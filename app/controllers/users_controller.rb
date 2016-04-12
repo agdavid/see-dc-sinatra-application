@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect "/"
       else
-        erb :"users/login", locals: {message: "Invalid username or password! Please try again."}
+        erb :"users/login", :layout => :"layout/external", locals: {message: "Invalid username or password! Please try again."}
       end
     end
   end
@@ -60,20 +60,42 @@ class UsersController < ApplicationController
   end
 
   get '/lists/new' do #render new list form
-    @sights = Sight.all
-    erb :"lists/new", :layout => :"layout/internal"
+    if !current_user.sight_ids.empty?
+      @user = current_user
+      @sights = @user.sights
+      @reviews = @user.reviews
+      erb :"users/show", :layout => :"layout/internal", locals: {message: "You already have a list! View or edit your list below."}
+    else
+      @sights = Sight.all
+      erb :"lists/new", :layout => :"layout/internal"
+    end
   end 
 
   post '/lists' do #process new list form
-    current_user.sight_ids = params[:user][:sight_ids]
-    if params[:sight][:name]== "" || params[:sight][:description]== ""
-      erb :"lists/new", locals: {message: "Missing new Sight information! Please fill in all fields"} 
+    if params[:sight][:name]== "" && params[:sight][:description]== ""
+      #if no new sight is added
+      current_user.sight_ids = params[:user][:sight_ids]
+      current_user.save
+      @user = current_user
+      @sights = @user.sights
+      @reviews = @user.reviews
+      erb :"users/show", :layout => :"layout/internal", locals: {message: "List successfully created!"}
     else
-      @sight = Sight.create(params[:sight])
-      current_user.sights << @sight if !current_user.sights.include?(@sight)
+      #if a new sight field is filled
+      current_user.sight_ids = params[:user][:sight_ids]
+      if params[:sight][:name]== "" || params[:sight][:description]== ""
+        @sights = Sight.all
+        erb :"lists/new", locals: {message: "Missing new Sight information! Please fill in all fields"} 
+      else
+        @sight = Sight.create(params[:sight])
+        current_user.sights << @sight if !current_user.sights.include?(@sight)
+        current_user.save
+        @user = current_user
+        @sights = @user.sights
+        @reviews = @user.reviews
+        erb :"users/show", :layout => :"layout/internal", locals: {message: "List successfully created!"}
+      end
     end
-    current_user.save
-    redirect "users/#{current_user.slug}"
   end
 
   get '/lists/:slug/edit' do #render edit list form, if current_user owns the list

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   get '/sights/:id' do
     @sight = Sight.find_by_id(params[:id])
     @reviews = @sight.reviews
-    erb :"/sights/show"
+    erb :"/sights/show", :layout => :"layout/internal"
   end
 
 end
