@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   get '/reviews' do #show all reviews, descending from most recent
     if logged_in
       @reviews = Review.all.order("id DESC")
-      erb :"reviews/index"
+      erb :"reviews/index", :layout => :"layout/internal"
     else
       redirect "/"
     end
@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
   get '/reviews/new' do #load new review form
     if logged_in
       @sights = Sight.all
-      erb :"reviews/new"
+      erb :"reviews/new", :layout => :"layout/internal"
     else
       redirect "/"
     end
@@ -42,11 +42,11 @@ class ReviewsController < ApplicationController
       @review.save
       @user = User.find(@review.user_id)
       @sight = Sight.find_by_id(@review.sight_id)
-      erb :"/reviews/show", locals: {message: "Review successfully updated!"}
+      erb :"/reviews/show", :layout => :"layout/internal", locals: {message: "Review successfully updated!"}
     else
       @user = User.find(@review.user_id)
       @sight = Sight.find_by_id(@review.sight_id)
-      erb :"/reviews/show", locals: {message: "#{current_user.username} this is not your review! You may not edit this content."}
+      erb :"/reviews/show", :layout => :"layout/internal", locals: {message: "#{current_user.username} this is not your review! You may not edit this content."}
     end
   end
 
@@ -55,7 +55,7 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
       @user = User.find(@review.user_id)
       @sight = Sight.find_by_id(@review.sight_id)
-      erb :"reviews/show"
+      erb :"reviews/show", :layout => :"layout/internal"
     else
       redirect '/'
     end
@@ -66,11 +66,11 @@ class ReviewsController < ApplicationController
     if @review.user_id == current_user.id
       @sight = Sight.find_by_id(@review.sight_id)
       @sights = Sight.all
-      erb :"/reviews/edit" 
+      erb :"/reviews/edit", :layout => :"layout/internal" 
     else
       @user = User.find(@review.user_id)
       @sight = Sight.find_by_id(@review.sight_id)
-      erb :"/reviews/show", locals: {message: "#{current_user.username} this is not your review! You may not edit this content."}
+      erb :"/reviews/show", :layout => :"layout/internal", locals: {message: "#{current_user.username} this is not your review! You may not edit this content."}
     end
   end 
 

@@ -1,19 +1,37 @@
-<h1>Welcome, <%= current_user.username %>, to the List of DC Sights</h1>
-
 <% if @sights.empty? %>
-  There are no Sights listed. Create a Sight that others should visit now!
-  <a href="/sights/new"><input type="submit" value="Create Sight"></a><br>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>There are no sights listed. Create a sight that others should visit now!</h4><br>
+      <a href="/sights/new"><input type="submit" value="Create Sight"></a>
+      <br></br>
+    </div> <!-- col-sm-12 -->
+  </div> <!-- row -->
 
 <% else %>
 
-  Here are the DC Sights:<br>
-  <ul>
-  <% @sights.each do |sight| %>
-    <li><%= sight.name %> - <%= sight.description %> <a href="/sights/<%= sight.id %>"><input type="submit" value="See Sight Page"></a></li>
-  <% end %>
-  </ul>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Below are the DC sights. Click a sight for further information and reviews.</h4>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <% counter = 1 %>
+            <% @sights.each do |sight| %>
+              <tr>
+                <td>
+                  <%= counter %>. <a href="/sights/<%= sight.id %>"><%= sight.name %></a> - <%= sight.description %>
+                  <% counter += 1 %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <h4>Don't see the sight you are looking for? Create a sight that others should visit now!</h4>
+      <a href="/sights/new"><input type="submit" value="Create Sight"></a>
+      <br></br>
+    </div> <!-- col-sm-12 -->
+  </div> <!-- row -->
+  
 <% end %>
-Don't see the Sight you are looking for? Create a Sight that others should visit now!  <a href="/sights/new"><input type="submit" value="Create Sight"></a>
-<br></br>
-<a href="/users/<%= current_user.slug %>"><input type="submit" value="View Your Existing List"></a><br>
-<a href="/lists/new"><input type="submit" value="Create Your List"></a><br>

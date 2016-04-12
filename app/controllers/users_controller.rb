@@ -56,12 +56,12 @@ class UsersController < ApplicationController
     @user = User.find_by_slug(params[:slug])
     @sights = @user.sights
     @reviews = @user.reviews
-    erb :"users/show"
+    erb :"users/show", :layout => :"layout/internal"
   end
 
   get '/lists/new' do #render new list form
     @sights = Sight.all
-    erb :"lists/new"
+    erb :"lists/new", :layout => :"layout/internal"
   end 
 
   post '/lists' do #process new list form
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
     @user = User.find_by_slug(params[:slug])
     if @user.slug == current_user.slug
       @sights = Sight.all
-      erb :"lists/edit"
+      erb :"lists/edit", :layout => :"layout/internal"
     else
       erb :"users/#{@user.slug}", locals: {message: "Not authorized to edit this list!"}
     end 

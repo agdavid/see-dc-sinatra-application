@@ -2,11 +2,22 @@
   <%= message %>
 <% end %>
 
-<h4><%= @user.username %> reviewed the <%= @sight.name %>, and said:</h4>
-<%= @review.content %>
-<br></br>
-<a href="/reviews/<%= @review.id %>/edit"><input type="submit" value="Edit the Review"></a>
-<form method="POST" action="/reviews/<%= @review.id %>/delete">
-<input type="hidden" id="hidden" name="_method" value="DELETE">
-<input type="submit" value="Delete the Review">
-</form>
+<div class="row">
+  <div class="col-sm-12">
+    <h4>
+      <% if @user == current_user %>
+        <%= @user.username %>, you reviewed the <%= @sight.name %> and said:
+      <% else %>
+        <%= @user.username %> reviewed the <%= @sight.name %> and said:
+      <% end %>
+    </h4>
+    "<%= @review.content %>"
+    <br></br>
+    <a href="/reviews/<%= @review.id %>/edit"><input type="submit" value="Edit Review"></a>
+    <br></br>
+    <form method="POST" action="/reviews/<%= @review.id %>/delete">
+    <input type="hidden" id="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Review">
+    </form>    
+  </div> <!-- col-sm-12 -->
+</div><!-- row -->

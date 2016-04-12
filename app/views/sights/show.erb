@@ -1,19 +1,28 @@
-<% unless locals.empty? %>
-  <%= message %>
-<% end %>
+<div class="row">
+   <div class="col-sm-12">
+    <% unless locals.empty? %>
+      <%= message %>
+    <% end %>
+   </div>   
+</div>
 
-<h1><%= @sight.name %></h1>
-Description: <%= @sight.description %>
-<br></br>
-<% if @reviews.empty? %>
-  There are no reviews posted for <%= @sight.name %>. Contribute your review now!
-  <a href="/reviews/new"><input type="submit" value="Create Review"></a><br>
-
-<% else %>
-  
-  Here are the most recent reviews for <%= @sight.name %>:<br>
-  <% @reviews.each do |review| %>
-    <%= review.user.username %> said - <%= review.content %><a href="/reviews/<%= review.id %>"><input type="submit" value="See Full Review"></a><br>
-  <% end %>
-
-<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <h1><%= @sight.name %></h1>
+    <h4>Description:</h4>
+    <%= @sight.description %>    
+    <br></br>
+    
+    <% if @reviews.empty? %>
+      <h4>Reviews:</h4>
+      There are no reviews posted for <%= @sight.name %>. Contribute your review now!<br>
+      <a href="/reviews/new"><input type="submit" value="Create Review"></a><br>
+    <% else %>
+      <h4>Here are the most recent reviews for <%= @sight.name %>. Click a review for further information - or - to edit:</h4><br>
+      <% @reviews.each do |review| %>
+        <%= review.user.username %> said - <%= review.content %><a href="/reviews/<%= review.id %>"><input type="submit" value="See Review"></a><br>
+      <% end %>
+      Submit a review for <%= @sight.name %> <a href="/reviews/new"><input type="submit" value="Create Review"></a><br>
+    <% end %>    
+  </div> <!-- col-sm-12 -->
+</div> <!-- row -->

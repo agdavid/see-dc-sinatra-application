@@ -15,7 +15,9 @@ class ApplicationController < Sinatra::Base
     #session.clear
     if logged_in
       @user = current_user
-      erb :index
+      @sights = Sight.all
+      @reviews = Review.all.order("id DESC")
+      erb :index, :layout => :"layout/internal"
     else
       erb :homepage, :layout => :"layout/external"
     end

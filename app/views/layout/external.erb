@@ -13,14 +13,18 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
-    <!-- Background Image -->
+    <!-- Page Styling -->
     <style>
+      html {position: relative;
+            min-height: 100%;
+            }
       body {background-image:url('/img/capitol-building.jpg');
             background-size: cover;
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                -o-background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
             font-family: 'Arvo', serif;
+            margin-bottom: 70px;
               }
       .footer {position: absolute;
               bottom: 0;
@@ -31,6 +35,7 @@
               background-color: #000000;
               text-align: center;
               padding: 10px 0;
+              height: 70px;
               }
     </style>
 
@@ -43,14 +48,18 @@
   </head>
   <body>
     <div class="container-fluid">
+      
       <%= yield %>
-      <div class="row">
-        <div class="col-sm-12 footer">
+      
+      <!-- *** FOOTER *** -->
+      <div class="row footer">
+        <div class="col-sm-12">
           <p>&copy; 2016 <a href="http://agdavid.github.io">Antonio David</a>. All Rights Reserved.</p>
           <p>Powered by <a href="http://www.sinatrarb.com/" target="_blank">Sinatra</a>, <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> and education from <a href="http://flatironschool.com/" target="_blank">The Flatiron School</a>.</p>
-        </div> <!-- col-md-12 -->
+        </div> <!-- col-sm-12 -->
       </div> <!-- row -->
-    </div> <!-- container -->
+
+    </div> <!-- container-fluid -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

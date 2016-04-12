@@ -1,16 +1,22 @@
-<h1><%= current_user.username %>, below you can review a Sight</h1>
-<form method="POST" action="/reviews">
-  Choose one Sight to review by checking the box:<br>
-  <% @sights.each do |sight| %>
-    <input type="checkbox" name="sight[id]" id="sight_<%= sight.id %>" value="<%= sight.id %>"><%= sight.name %><br>
-  <% end %>
-  <br></br>
-  or, Create a new Sight to review:<br>
-  Name: <input type="text" name="sight[name]" id="new_sight_name"><br>
-  Description (one line): <input type="text" name="sight[description]" id="new_sight_description"><br>
-  <br></br>
-  <textarea name="review[content]" rows="4" cols="50" id="
-  review_content">Enter text here...</textarea>
-  <br></br>
-  <input type="submit" value="Submit Review">
-</form>
+<div class="row">
+  <div class="col-sm-12">
+    <h4>Review a sight below:</h4>
+    <form method="POST" action="/reviews">
+      <h5>Choose one sight to review by checking the box:</h5>
+      <% @sights.each do |sight| %>
+        <input type="checkbox" name="sight[id]" id="sight_<%= sight.id %>" value="<%= sight.id %>"><%= sight.name %><br>
+      <% end %>
+      <br>
+      - or - create a new sight to review:<br>
+      Name: <input type="text" name="sight[name]" id="new_sight_name"><br>
+      Description:<br>
+      <textarea name="sight[description]" rows="4" cols="50" id="
+      review_content">Enter brief description here...</textarea>
+      <br></br>
+      Review:<br>
+      <textarea name="review[content]" rows="4" cols="50" id="review_content">Enter review here...</textarea>
+      <br></br>
+      <input type="submit" value="Submit Review">
+    </form>    
+  </div> <!-- col-sm-12 -->
+</div> <!-- row -->
