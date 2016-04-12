@@ -6,7 +6,7 @@
     <input type="hidden" id="hidden" name="_method" value="PATCH">
       <h4>Step 1. Confirm and Check the Correct Sight</h4>
       <% @sights.each do |sight| %>
-        <input type="checkbox" name="sight[id]" id="sight_<%= sight.id %>" value="<%= sight.id %>"<%='checked' if @sight.id == sight.id %>><%= sight.name %><br>
+        <input type="radio" name="sight[id]" id="sight_<%= sight.id %>" value="<%= sight.id %>"<%='checked' if @sight.id == sight.id %>><%= sight.name %><br>
       <% end %>
       <br>
       <h4>Step 2. Update Your Thoughts</h4>

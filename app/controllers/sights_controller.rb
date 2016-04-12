@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class SightsController < ApplicationController
 
   get '/sights' do #show all sights
     if logged_in

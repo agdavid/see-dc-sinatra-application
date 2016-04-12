@@ -85,7 +85,7 @@ class UsersController < ApplicationController
       current_user.sight_ids = params[:user][:sight_ids]
       if params[:sight][:name]== "" || params[:sight][:description]== ""
         @sights = Sight.all
-        erb :"lists/new", locals: {message: "Missing new Sight information! Please fill in all fields"} 
+        erb :"lists/new", locals: {message: "Missing new sight information! Please fill in all fields."} 
       else
         @sight = Sight.create(params[:sight])
         current_user.sights << @sight if !current_user.sights.include?(@sight)

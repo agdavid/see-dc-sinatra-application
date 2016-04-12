@@ -19,7 +19,6 @@ class ReviewsController < ApplicationController
   end
 
   post '/reviews' do #process new review form
-
     if logged_in
       @review = Review.new(content: params[:review][:content], user_id: current_user.id, sight_id: params[:sight][:id].to_i)
       @review.save
