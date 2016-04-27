@@ -23,7 +23,7 @@ class SightsController < ApplicationController
     erb :"sights/show", :layout => :"layout/internal", locals: {message: "Sight successfully created!"}
   end
 
-  get '/sights/:id' do
+  get '/sights/:id' do #show one sight
     @sight = Sight.find_by_id(params[:id])
     @reviews = @sight.reviews
     erb :"/sights/show", :layout => :"layout/internal"

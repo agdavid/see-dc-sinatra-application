@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == "" 
-      erb :"users/signup", locals: {message: "Please fill in all fields."} 
+      erb :"users/signup", :layout => :"layout/external", locals: {message: "MISSING INFORMATION! Please fill in all fields."} 
     else
       @user = User.create(username: params[:username], email: params[:email], password: params[:password])
       session[:user_id] = @user.id
@@ -30,14 +30,14 @@ class UsersController < ApplicationController
 
   post '/login' do
     if params[:username] == "" || params[:password] == ""
-      erb :"users/login", locals: {message: "Missing information! Please fill in all fields."}
+      erb :"users/login", :layout => :"layout/external", locals: {message: "MISSING INFORMATION! Please fill in all fields."}
     else
-      @user = User.find_by(:username => params["username"])
-      if @user && @user.authenticate(params["password"])
+      @user = User.find_by(:username => params[:username])
+      if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect "/"
       else
-        erb :"users/login", :layout => :"layout/external", locals: {message: "Invalid username or password! Please try again."}
+        erb :"users/login", :layout => :"layout/external", locals: {message: "INVALID INFORMATION! Please try again."}
       end
     end
   end
