@@ -18,9 +18,13 @@ class SightsController < ApplicationController
   end
 
   post '/sights' do #process new sight form
-    @sight = Sight.create(params[:sight])
-    @reviews = @sight.reviews
-    erb :"sights/show", :layout => :"layout/internal", locals: {message: "Sight successfully created!"}
+    if params[:sight][:name] == "" || params[:sight][:description] == ""
+      erb :"sights/new", :layout => :"layout/internal", locals: {message: "MISSING INFORMATION! Please fill in all fields."}
+    else
+      @sight = Sight.create(params[:sight])
+      @reviews = @sight.reviews
+      erb :"sights/show", :layout => :"layout/internal", locals: {message: "Sight successfully created!"}
+    end
   end
 
   get '/sights/:id' do #show one sight
