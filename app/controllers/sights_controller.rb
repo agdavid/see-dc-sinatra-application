@@ -33,4 +33,14 @@ class SightsController < ApplicationController
     erb :"/sights/show", :layout => :"layout/internal"
   end
 
+  get '/search' do 
+    erb :"/sights/search"
+  end
+
+  post '/search' do 
+    @sight = Sight.find_by(name: params[:name])
+    @reviews = @sight.reviews
+    erb :"sights/show", :layout => :"layout/internal", locals: {message: "Sight successfully located!"}
+  end
+
 end

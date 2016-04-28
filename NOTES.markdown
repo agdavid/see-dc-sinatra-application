@@ -60,3 +60,11 @@ x reviews folder
 - add bootstrap css
 
 
+*** Twitter-style Following ***
+- get /search
+- render form for text input
+- post /search
+
+
+
+
