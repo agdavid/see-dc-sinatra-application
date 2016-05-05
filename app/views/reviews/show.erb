@@ -13,12 +13,14 @@
     </h4>
     "<%= @review.content %>"
     <br></br>
-    <a href="/reviews/<%= @review.id %>/edit"><input type="submit" value="Edit Review"></a>
-    <br></br>
-    <form method="POST" action="/reviews/<%= @review.id %>/delete">
-    <input type="hidden" id="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Review">
-    </form><br>
+    <% if @user == current_user %>
+      <a href="/reviews/<%= @review.id %>/edit"><input type="submit" value="Edit Review"></a>
+      <br></br>
+      <form method="POST" action="/reviews/<%= @review.id %>/delete">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Review">
+      </form><br>
+    <% end %>  
     <h5>Want to share more thoughts? Contribute another review!</h5>
       <a href="/reviews/new"><input type="submit" value="Create Review"></a>
       <br></br>

@@ -35,7 +35,8 @@
       <% if !@sights.empty? %>
         <h4>
           <% if @user == current_user %>
-            Your list of sights (click <a href="/lists/<%= @user.slug %>/edit">here</a> to edit your list):
+            <p>Your Sights<p>
+            <p>(click a sight for more info -or- <a href="/lists/<%= @user.slug %>/edit">here</a> to edit your list):</p>
           <% else %>
             <%= @user.username %>'s list of sights:
           <% end %>
@@ -65,7 +66,8 @@
         
         <h4>
           <% if @user == current_user %>
-            Your reviews (click to see and edit review):
+            <p>Your Reviews</p>
+            <p>(click a sight for more info -or- a review to see and edit):</p>
           <% else %>
             <%= @user.username %>'s reviews:
           <% end %>
